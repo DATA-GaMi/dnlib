@@ -5,24 +5,23 @@
   <PropertyGroup>
     <DefineConstants>$(DefineConstants);$(MoreDefineConstants)</DefineConstants>
     <DefineConstants Condition=" '$(DnlibThreadSafe)' != 'false' ">$(DefineConstants);THREAD_SAFE</DefineConstants>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net48;net6.0</TargetFrameworks>
     <!-- It's not possible to target .NET Framework 3.5 when using dotnet build
          https://github.com/Microsoft/msbuild/issues/1333 -->
     <NoTargetFrameworkNet35 Condition=" '$(NoTargetFrameworkNet35)' == '' AND '$(MSBuildRuntimeType)' == 'Core' ">true</NoTargetFrameworkNet35>
     <TargetFrameworks Condition=" '$(NoTargetFrameworkNet35)' != 'true' ">$(TargetFrameworks);net35</TargetFrameworks>
 
-    <Description>Reads and writes .NET assemblies and modules</Description>
+    <Description>读取和写入 .NET 程序集和模块</Description>
     <Title>$(Description)</Title>
-    <Copyright>Copyright (C) 2012-2019 de4dot@gmail.com</Copyright>
+    <Copyright>Copyright (C) *2022*</Copyright>
     <AssemblyTitle>dnlib</AssemblyTitle>
     <AssemblyTitle Condition="$(DefineConstants.Contains(THREAD_SAFE))">$(AssemblyTitle) (thread safe)</AssemblyTitle>
     <AssemblyName>dnlib</AssemblyName>
     <PackageId>dnlib</PackageId>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <Version>3.5.0</Version>
+    <Version>3.5.0-rc</Version>
     <InformationalVersion>$(Version)</InformationalVersion>
-    <Authors>0xd4d</Authors>
-    <PackageProjectUrl>https://github.com/0xd4d/dnlib</PackageProjectUrl>
+    <Authors>Desec</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageVersion>$(InformationalVersion)</PackageVersion>
     <PackageTags>dotnet;assembly;module;reader;writer;PDB;PortablePdb;WindowsPdb;IL;CIL;MSIL;metadata</PackageTags>
@@ -38,7 +37,11 @@
     <PackageDescription>
 Reads and writes .NET assemblies and modules, Windows PDBs and Portable PDBs.
 
-For better *Windows PDB* writer support, you should add a reference to `Microsoft.DiaSymReader.Native` nuget package too, see the dnlib README for more info: https://github.com/0xd4d/dnlib#windows-pdbs . You don't need to do anything special for *Portable PDB* support.
+For better *Windows PDB* writer support, you should add a reference to `Microsoft.DiaSymReader.Native` nuget package too, 
+
+see the dnlib README for more info: https://github.com/0xd4d/dnlib#windows-pdbs .
+
+You don't need to do anything special for *Portable PDB* support.
     </PackageDescription>
     <PackageReleaseNotes></PackageReleaseNotes>
 
